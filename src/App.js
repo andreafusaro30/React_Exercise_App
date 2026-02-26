@@ -1,8 +1,57 @@
-import logo from './logo.svg';
+/*import logo from './logo.svg';
 import './App.css';
+*/
+import React, { useState } from "react";
+import RepetitionExercise from "./components/RepetitionExercise";
+import DurationExercise from "./components/DurationExercise";
+
 
 function App() {
-  return (
+  const [chosenExercise, setChosenExercise]= useState();
+//exercises
+  const exercises = [
+    { name: "Push Ups", type: "repetition" },
+    { name: "Running", type: "duration" },
+    { name: "Planks", type: "duration" },
+    
+  ];
+//if exercise is repetition
+  if (chosenExercise) {
+    if(chosenExercise.type === "repetition"){
+      return(
+        <RepetitionExercise
+          name={chosenExercise.name}
+          />
+      );
+    }
+//if exercise is duration
+    if(chosenExercise.type === "duration"){
+      return(
+        <DurationExercise
+          name={chosenExercise.name}
+        />
+      );
+    }
+  }
+
+  return(
+    <div>
+      <h1> Exercise Tracker </h1>
+
+      {exercises.map((exercise, index) => (
+        <button
+          key = {index}
+          onClick={() => setChosenExercise(exercise)}
+          >
+            {exercise.name}
+            </button>
+      ))}
+      </div>
+  );
+}
+export default App;
+
+  /*return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -20,6 +69,4 @@ function App() {
       </header>
     </div>
   );
-}
-
-export default App;
+  */
