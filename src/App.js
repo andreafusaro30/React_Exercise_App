@@ -4,6 +4,7 @@ import './App.css';
 import React, { useState } from "react";
 import RepetitionExercise from "./components/RepetitionExercise";
 import DurationExercise from "./components/DurationExercise";
+import StretchFlexExercise from "./components/StretchFlexExercise";
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     { name: "Push Ups", type: "repetition" },
     { name: "Running", type: "duration" },
     { name: "Planks", type: "duration" },
+    { name: "flexes and stretches", type: "flex"},
     
   ];
 //if exercise is repetition
@@ -28,6 +30,14 @@ function App() {
     if(chosenExercise.type === "duration"){
       return(
         <DurationExercise
+          name={chosenExercise.name}
+        />
+      );
+    }
+    //if exercise is flex/stretches
+    if(chosenExercise.type === "flex"){
+      return(
+        <StretchFlexExercise
           name={chosenExercise.name}
         />
       );
